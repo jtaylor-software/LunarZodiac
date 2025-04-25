@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var year = 2025
-  @State private var imageNumber = 5
-  let numberOfImages = 12
+  let animalNames = ["RAT", "OX", "TIGER", "RABBIT", "DRAGON", "SNAKE", "HORSE", "GOAT", "MONKEY", "ROOSTER", "DOG", "PIG"]
   
     var body: some View {
         VStack {
@@ -21,9 +20,16 @@ struct ContentView: View {
             
           Spacer()
           
-          Image("image\(imageNumber)")
+          Image("\(animalNames[abs(year % 10)])")
             .resizable()
             .scaledToFit()
+          
+          Text("\(animalNames[abs(year % 10)])")
+            .font(.largeTitle)
+            .fontWeight(.black)
+          
+          
+            
           
           HStack {
             Button {
@@ -48,19 +54,11 @@ struct ContentView: View {
     }
   func decrementYear() {
     year -= 1
-    if imageNumber < 0 {
-      imageNumber = 11
-    } else {
-      imageNumber -= 1
-    }
+    
   }
   func incrementYear() {
     year += 1
-    if imageNumber > 11 {
-      imageNumber = 0
-    } else {
-      imageNumber += 1
-    }
+    
   }
 }
 
